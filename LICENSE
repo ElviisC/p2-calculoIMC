@@ -1,21 +1,110 @@
-MIT License
+programa {
+  inclua biblioteca Util --> u
 
-Copyright (c) 2024 ElviisC
+  funcao inicio() {
+    inteiro esc, ano, idade2050, i
+    real altura, peso, imc, media, trimestre1, trimestre2, trimestre3, prova1, prova2, prova3, trabalho1, trabalho2, trabalho3, minimo, maximo, sorteios, numero_sorteado
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+    escreva("-------------------------------------- \n")
+    escreva("               ESCOLHA                 \n")
+    escreva("-------------------------------------- \n")
+    escreva("\n[1] Para calcular o IMC. \n")
+    escreva("[2] Para calcular a média anual. \n")
+    escreva("[3] Para descobrir sua idade em 2050. \n")
+    escreva("[4] Para sortear um número aleatório. \n")
+    escreva("\nSua escolha: ")
+    leia(esc)
+  
+    se (esc == 1) {
+      escreva("---------------------------- \n")
+      escreva("  Vamos descobrir seu IMC!   \n")
+      escreva("---------------------------- \n")
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+      escreva("\nQual o seu peso (kg)? ")
+      leia(peso)
+      escreva("Qual sua altura (m)? ")
+      leia(altura)
+      imc = peso / (altura * altura)
+      escreva("\nSeu IMC é: ", imc, "\n")
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+      se (imc < 18.5) {
+        escreva("\nClassificação: BAIXO PESO")
+      }
+      senao se (imc < 25) {
+        escreva("\nClassificação: NORMAL")
+      }
+      senao se (imc < 30) {
+        escreva("\nClassificação: SOBREPESO")
+      }
+      senao {
+        escreva("\nClassificação: OBESIDADE")
+      }
+    }
+    senao se (esc == 2) {
+      escreva("------------------------------------ \n")
+      escreva("  Vamos descobrir sua média anual!   \n")
+      escreva("------------------------------------ \n")
+
+      escreva("\nMáximo prova: 60")
+      escreva("\nMáximo trabalho: 40\n")
+
+      escreva("\nQual foi a nota de prova do 1º trimestre? ")
+      leia(prova1)
+      escreva("Qual foi a nota de trabalho do 1º trimestre? ")
+      leia(trabalho1)
+      escreva("\nQual foi a nota de prova do 2º trimestre? ")
+      leia(prova2)
+      escreva("Qual foi a nota de trabalho do 2º trimestre? ")
+      leia(trabalho2)
+      escreva("\nQual foi a nota de prova do 3º trimestre? ")
+      leia(prova3)
+      escreva("Qual foi a nota de trabalho do 3º trimestre? ")
+      leia(trabalho3)
+
+      trimestre1 = prova1 + trabalho1
+      trimestre2 = prova2 + trabalho2
+      trimestre3 = prova3 + trabalho3
+      media = (trimestre1 + trimestre2 + trimestre3) / 3
+
+      escreva("\nSua nota do primeiro trimestre: ", trimestre1)
+      escreva("\nSua nota do segundo trimestre: ", trimestre2)
+      escreva("\nSua nota do terceiro trimestre: ", trimestre3)
+      escreva("\nSua média anual: ", media, "\n")
+      
+      se (media >= 60)
+        escreva("\nVocê foi APROVADO!")
+      senao
+        escreva("\nVocê foi REPROVADO.")
+    }
+    senao se (esc == 3) {
+      escreva("-------------------------------------- \n")
+      escreva("  Vamos descobrir sua idade em 2050!   \n")
+      escreva("-------------------------------------- \n")
+      escreva("\nEm que ano você nasceu? ")
+      leia(ano)
+      idade2050 = 2050 - ano
+      escreva("\nSua idade em 2050 será: ", idade2050, " anos.")
+    }
+    senao se (esc == 4){
+      escreva("-------------------------------------- \n")
+      escreva("  Vamos sortear um número aleatório!   \n")
+      escreva("-------------------------------------- \n")
+
+      escreva("\nInforme um valor mínimo: ")
+      leia(minimo)
+
+      escreva("Informe um valor máximo: ")
+      leia(maximo)
+
+      escreva("Informe quantos valores deseja sortear: ")
+      leia(sorteios)
+
+      para (i = 1; i <= sorteios; i++) {
+    
+        numero_sorteado = u.sorteia(minimo, maximo)
+        escreva("\nSorteio N° ", i, ": ", numero_sorteado)
+      }
+    }
+    senao {
+      escreva("\nDigite uma opção válida.")
+    }
